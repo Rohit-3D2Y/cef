@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { Outlet } from 'react-router'
 const App = () => {
   return (
-    <div className='bg-red-500'>App</div>
+<>
+  <Outlet/>
+</>
   )
 }
 
