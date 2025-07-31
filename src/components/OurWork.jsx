@@ -7,7 +7,7 @@ const OurWork = () => {
     "Policy Design and Systems Reform",
     "Advisory and Evaluation Systems",
     "Framework Design and Program Development",
-    "Our Impact Insights",
+    "Impact Insights",
   ];
 
   const posts = [
@@ -117,6 +117,16 @@ const OurWork = () => {
       description:
         "Led the design and execution of a tech-enabled pilot tracer study covering 18,500+ ITI graduates to track employment outcomes and support a scalable methodology for India’s TVET system",
       pdf: "/assets/policy6.pdf",
+    },
+     {
+      id: 12,
+      category: "Impact Insights",
+      image: "/assets/impactt.png",
+      title:
+        "Learnings from the pilot industry apprenticeship initiative scheme.",
+      description:
+        "To set up a proof of concept for a skills training modality which a) satisfies the skilled manpower needs of Micro, Small and Medium Enterprises (MSME) firms; b) establishes a scalable mechanism that is able to skill India’s youth at speed. ",
+      pdf: "/assets/impact1.pdf",
     },
   ];
 

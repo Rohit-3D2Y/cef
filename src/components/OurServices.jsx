@@ -38,7 +38,7 @@ export default function WhatWeDo() {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl md:text-5xl font-bold text-gray-900"
+            className="text-6xl md:text-5xl font-semibold tracking-tighter text-[#1e256e]"
           >
             What we provide
           </motion.h2>
@@ -46,7 +46,7 @@ export default function WhatWeDo() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base md:text-lg lg:text-3xl text-gray-400"
+            className="text-base md:text-lg lg:text-3xl font-semibold tracking-tighter text-gray-600"
           >
             We Support Your Development 
             <br />
@@ -55,7 +55,7 @@ export default function WhatWeDo() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-[#1e256e] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0e154d] transition"
+            className="bg-[#ffd300] text-[#1e256e] px-6 py-3 rounded-lg font-semibold tracking-tighter hover:bg-[#e6be00] transition"
           >
             Learn More
           </motion.button>
@@ -101,13 +101,13 @@ function FlipCard({ title, description, icon }) {
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 200 }}
           />
-          <h3 className="text-sm md:text-base font-semibold text-center text-gray-800 px-2">
+          <h3 className="text-sm md:text-base font-semibold tracking-tighter text-center text-[#1e256e] px-2">
             {title}
           </h3>
         </div>
 
         {/* Back Side */}
-        <div className="absolute inset-0 bg-[#1e256e] text-white rounded-xl px-4 py-6 transform rotateY-180 backface-hidden flex items-center justify-center text-sm md:text-base text-center leading-snug">
+        <div className="absolute inset-0 bg-[#1e256e] text-white rounded-xl px-4 py-6 transform rotateY-180 backface-hidden flex items-center justify-center text-sm md:text-base font-semibold tracking-tighter text-center leading-snug">
           <p>{description}</p>
         </div>
       </div>
