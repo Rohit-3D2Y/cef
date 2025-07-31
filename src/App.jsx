@@ -10,8 +10,6 @@ import PartnersSection from './components/PartnerSection'
 import StatsSection from './components/ProjectExp'
 import OurWork from './components/OurWork'
 
-import OurServices from './components/OurServices'
-
 import Client from './components/ClientSection'
 import TestimonialSection from './components/Testimonial'
 import ResearchEthicsSection from './components/ResearchEthicsSection'
@@ -20,7 +18,6 @@ const App = () => {
   return (
     <div>
       <LandingCarousel />
-      <OurServices />
       <AboutSection />
       <PartnersSection />
       <AboutUs />
