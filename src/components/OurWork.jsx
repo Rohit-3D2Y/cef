@@ -7,7 +7,7 @@ const OurWork = () => {
     "Policy Design and Systems Reform",
     "Advisory and Evaluation Systems",
     "Framework Design and Program Development",
-    "Knowledge Papers",
+    "Our Impact Insights",
   ];
 
   const posts = [
@@ -137,11 +137,25 @@ const OurWork = () => {
 
         {/* Categories */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
-          {categories.map((cat) => (
+          {categories.slice(0, 4).map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+              className={`px-4 py-2 rounded-full text-base font-medium transition-colors duration-300 ${
+                activeCategory === cat
+                  ? "bg-[#ffd300] text-[#1e256e] shadow-md"
+                  : "bg-gray-200 text-gray-700 hover:bg-[#ffd300] hover:text-[#1e256e]"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+          <div className="w-full"></div>
+          {categories.slice(4).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full text-base font-medium transition-colors duration-300 ${
                 activeCategory === cat
                   ? "bg-[#ffd300] text-[#1e256e] shadow-md"
                   : "bg-gray-200 text-gray-700 hover:bg-[#ffd300] hover:text-[#1e256e]"
