@@ -5,7 +5,7 @@ const AboutUs = () => {
     <div id="about" className="p-5 py-10">
       {/* Purpose Section */}
       <div className="flex flex-col gap-3 items-center">
-        <h1 className="text-xl bg-[#292d6a] text-white py-2 px-4 rounded-2xl">
+        <h1 className="text-xl md:text-3xl bg-[#292d6a] text-white py-2 px-4 rounded-2xl">
           Our Purpose
         </h1>
         <h1 className="font-semibold tracking-tighter text-[#292d6a] text-3xl md:text-5xl text-center">

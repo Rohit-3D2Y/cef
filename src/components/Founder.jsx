@@ -152,7 +152,6 @@ export default function FounderMessageBlock() {
           </motion.div>
         </div>
       </section>
-      <ProjectExperience />
     </>
   );
 }

@@ -101,8 +101,8 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-2xl sm:text-3xl lg:text-4xl dm-sans font-semibold tracking-tight mb-4">
-                Transform your Impact  {" "}
-                <span className="text-yellow-500">Intervention</span> with Us!
+                Transform your   {" "}
+                <span className="text-yellow-500">Impact Intervention</span> with Us!
               </h3>
               <p className="text-gray-300 text-base sm:text-lg mb-8">
                 We generate evidence-based insights and design adaptive systems that help programs deliver sustainable and scalable impact efficiently.
@@ -122,7 +122,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Company Info */}
             <motion.div variants={itemVariants} className="lg:col-span-1">
               <div className="mb-6">
@@ -198,29 +198,7 @@ const Footer = () => {
 
             
 
-            {/* Support */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-lg font-bold text-white mb-6">Support</h3>
-              <ul className="space-y-3">
-                {support.map((item, index) => (
-                  <motion.li
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <a
-                      href={item.href}
-                      className="text-gray-300 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center group"
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+            
           </div>
         </motion.div>
 

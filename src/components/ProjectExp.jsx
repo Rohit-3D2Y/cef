@@ -1,55 +1,31 @@
 import React from "react";
 
-const ProjectExperience = () => {
-  const data = [
-    { number: 19, label: "Governments" },
-    { number: 11, label: "Multilateral / Bilateral" },
-    { number: 4, label: "NGOs" },
-    { number: 1, label: "CSR Arms" },
-    { number: 9, label: "Corporates" },
+const StatsSection = () => {
+  const stats = [
+    { number: "7", label: "Projects" },
+    { number: "4", label: "Sectors" },
+    { number: "8", label: "Geographies" },
+    { number: "5", label: "Partners and Clients" },
+    { number: "10 Lakh+", label: "Beneficiaries Targeted" },
   ];
 
   return (
-    <section className="w-full py-12 px-6">
-      <div className="max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden relative">
-        {/* Background overlay with pattern */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#292d6a] to-[#1848a0]">
-          <div
-            className="absolute inset-0 opacity-15"
-            style={{
-              backgroundImage:
-                "url('https://www.transparenttextures.com/patterns/graphy-dark.png')",
-              backgroundSize: "cover",
-            }}
-          />
-        </div>
-
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 text-center text-white">
-          {/* Left Title */}
-          <div className="col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-[#292d6a] p-6 md:p-8">
-            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-wide leading-snug text-[#ffd300]">
-              Project <br /> Experience
-            </h2>
+    <section className="bg-[#1e256e] py-12 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
+        {stats.map((stat, idx) => (
+          <div key={idx} className="text-white relative">
+            <h3 className="text-3xl md:text-4xl font-bold text-[#ffd300]">
+              {stat.number}
+            </h3>
+            <p className="mt-2 text-sm md:text-base">{stat.label}</p>
+            {idx < stats.length - 1 && (
+              <span className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 h-10 w-px bg-gray-400/40"></span>
+            )}
           </div>
-
-          {/* Stats */}
-          {data.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col items-center justify-center p-6 md:p-8 border-t md:border-t-0 md:border-l border-white/30"
-            >
-              <span className="text-[#ffd300] text-4xl md:text-5xl font-extrabold drop-shadow-sm">
-                {item.number}
-              </span>
-              <span className="mt-2 text-sm md:text-base font-medium text-gray-100">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default ProjectExperience;
+export default StatsSection;
