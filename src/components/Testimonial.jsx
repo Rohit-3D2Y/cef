@@ -41,7 +41,7 @@ const TestimonialSection = () => {
   const testimonial = testimonials[current];
 
   return (
-    <section className="py-16 px-6 bg-white">
+    <section id="testimonials" className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10">
         {/* Left Heading */}
         <div className="md:w-1/3 text-center md:text-left">

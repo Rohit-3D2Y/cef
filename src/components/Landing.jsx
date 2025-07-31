@@ -84,7 +84,7 @@ const LandingCarousel = () => {
     "Our Services",
     "Our Work",
     "Partners",
-    "Our Clients",       
+    "Testimonials",       
     "Contact",
   ];
 
