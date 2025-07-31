@@ -69,7 +69,7 @@ export default function OurTeam() {
                 {/* Name and Icon Section */}
                 <div className="flex items-start gap-3 mb-3">
                   {/* Network Icon */}
-                  <div className="flex-shrink-0 mt-1">
+                  {/* <div className="flex-shrink-0 mt-1">
                     <div className="w-12 h-12 flex items-center justify-center">
                       <img
                         src="/assets/logo1.png"
@@ -80,7 +80,7 @@ export default function OurTeam() {
                         }}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Name and Designation */}
                   <div className="flex-1">
