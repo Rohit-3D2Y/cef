@@ -35,7 +35,7 @@ export default function OurTeam() {
   ]
 
   return (
-    <section className="w-full py-16 px-6 bg-gray-50">
+    <section className="w-full py-16 px-6 bg-gray-50 tracking-tighter">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -46,7 +46,7 @@ export default function OurTeam() {
         </div>
 
         {/* Team Cards Grid */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto font-semibold text-xl">
           {teamMembers.map((member, index) => (
             <div
               key={index}
@@ -78,13 +78,13 @@ export default function OurTeam() {
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight flex items-center gap-3">
                       <img
-                        src="/assets/networkImage.png" // Replace with your actual icon path
+                        src="/assets/networkImage.png" 
                         alt="icon"
-                        className="w-8 h-8 object-contain" // 👈 Increased size to 32px
+                        className="w-8 h-8 object-contain font-bold" 
                       />
                       {member.name}
                     </h3>
-                    <p className="text-gray-600 text-sm font-medium mb-2">
+                    <p className="text-gray-600 text-sm font-semibold mb-2">
                       {member.designation}
                     </p>
                     {/* Separator Line */}
