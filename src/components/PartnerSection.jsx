@@ -36,7 +36,7 @@ const PartnersSection = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-16 px-6">
+    <section id="partners" className="bg-gray-50 py-16 px-6">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#292d6a]">

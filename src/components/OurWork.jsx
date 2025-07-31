@@ -138,7 +138,7 @@ const OurWork = () => {
       : posts.filter((post) => post.category === activeCategory);
 
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <section id="ourwork" className="py-16 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1e256e] text-center mb-6">

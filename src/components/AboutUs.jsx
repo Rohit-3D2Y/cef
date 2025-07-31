@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div id="about" className="p-5 py-10">
+    <div id="aboutus" className="p-5 py-10">
       {/* Purpose Section */}
       <div className="flex flex-col gap-3 items-center">
         <h1 className="text-xl md:text-3xl bg-[#292d6a] text-white py-2 px-4 rounded-2xl">
