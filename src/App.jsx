@@ -9,11 +9,10 @@ import AboutSection from './components/AboutSection'
 import PartnersSection from './components/PartnerSection'
 import StatsSection from './components/ProjectExp'
 import OurWork from './components/OurWork'
-<<<<<<< HEAD
+
 import OurServices from './components/OurServices'
-=======
+
 import Client from './components/ClientSection'
->>>>>>> 79372aa47f3df83b32b71055de51c59157a41f27
 
 const App = () => {
   return (
