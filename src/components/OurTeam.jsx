@@ -3,7 +3,7 @@ export default function OurTeam() {
     {
       name: "HIRDESH CHOPRA",
       designation: "Principal Implementation Specialist",
-      image: "/assets/hir.png",
+      image: "/assets/Hirdesh.png",
       bgColor: "bg-[#1e256e]",
       description:
         "Chartered Accountant with a B.Com (Hons) from SRCC and advanced certifications in procurement, municipal finance, and ERP systems. Offers 40+ years of experience leading financial system deployments, procurement, and team coordination for WHO, ADB, and World Bank projects.",
@@ -11,7 +11,7 @@ export default function OurTeam() {
     {
       name: "SAKSHI KABRA",
       designation: "Senior Associate - Research, Implementation and Partnerships",
-      image: "/assets/sak.png",
+      image: "/assets/Sakshi_Kabra.png",
       bgColor: "bg-[#ffd300]",
       description:
         "M.A. in Education & Technology (TISS), M.A. in Sociology (IGNOU), B.El.Ed. (Gargi College, DU). Brings 5+ years of experience in education and research, mixed-method evaluations, training teachers, and driving business development/ partnership initiatives and designed the social science learning principles and curriculum development in the World Bank CHALK Project.",
@@ -19,7 +19,7 @@ export default function OurTeam() {
     {
       name: "ANKUR SHARMA",
       designation: "Field Manager",
-      image: "/assets/ank.png",
+      image: "/assets/Ankur_Sharma.png",
       bgColor: "bg-[#1e256e]",
       description:
         "B.Sc. in Agriculture and D.El.Ed with training in community facilitation, backed by 10+ years in agriculture, education, and rural development. Experienced in leading field operations, managing teams, and implementing programs with organizations like IDinsight, IFMR, and J-PAL.",
@@ -27,7 +27,7 @@ export default function OurTeam() {
     {
       name: "KRISHNANGI NEGI",
       designation: "HR & Admin Manager",
-      image: "/assets/kri.png",
+      image: "/assets/Krishnangi Negi.png",
       bgColor: "bg-[#ffd300]",
       description:
         "PGDM in Human Resources, an M.Com, and a B.Com, with professional training in HR best practices. Brings 7+ years of experience managing end-to-end HR operations, streamlining processes, and enhancing employee experience across the lifecycle.",
@@ -50,18 +50,19 @@ export default function OurTeam() {
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full md:w-72">
               {/* Image Section */}
-              <div className={`${member.bgColor} p-0 relative`}>
-                <div className="aspect-[4/5] relative overflow-hidden">
+              <div className="p-6 flex items-center justify-center">
+                <div className="relative overflow-hidden ">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="object-cover w-full h-full"
+                    className="w-full h-60 object-cover rounded-lg"
                     onError={(e) => {
                       e.target.src = "https://via.placeholder.com/400x500/e5e7eb/6b7280?text=Person";
                     }}
                   />
                 </div>
               </div>
+
 
               {/* Content Section */}
               <div className="p-6 bg-white">
@@ -70,9 +71,9 @@ export default function OurTeam() {
                   {/* Network Icon */}
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-12 h-12 flex items-center justify-center">
-                      <img 
-                        src="/assets/logo1.png" 
-                        className="w-12 h-12" 
+                      <img
+                        src="/assets/logo1.png"
+                        className="w-12 h-12"
                         alt="Company Logo"
                         onError={(e) => {
                           e.target.src = "https://via.placeholder.com/48x48/1e256e/ffffff?text=Logo";

@@ -5,25 +5,25 @@ const services = [
   {
     title: "Primary Data Collection & Field Research",
     description:
-      "We conduct mixed-method field research with cultural and linguistic alignment.",
+      "Designing and executing mixed-method research studies across diverse geographies, with our understanding of cultural and contextual nuances",
     icon: "/assets/research.png",
   },
   {
     title: "Advisory",
     description:
-      "We provide strategic advice to align development programs with national policies.",
+      "Building MEL/MEAL frameworks, SROI evalution, KAP study designs, feasibility studies, dipstick evalutions, ecnomic analysis, indicators and learning systems to track porgress and recommed solutions with accountability",
     icon: "/assets/advise.png",
   },
   {
     title: "Data Analytics & M&E Reporting",
     description:
-      "We deliver actionable data reports and dashboards that inform better decisions.",
+      "Applying advanced analytics to convert raw data into compelling narratives, dashboards and actionable insights",
     icon: "/assets/analytics.png",
   },
   {
     title: "Project Implementation",
     description:
-      "End-to-end support in designing, deploying, and evaluating scalable interventions.",
+      "Creating strategic M&E frameworks in collaboration with stakeholders, ensuring they are data-driven, context-sensitive and execution-ready for on-ground implementation",
     icon: "/assets/project.png",
   },
 ];
@@ -48,7 +48,7 @@ export default function WhatWeDo() {
             transition={{ delay: 0.2 }}
             className="text-base md:text-lg lg:text-3xl font-semibold tracking-tighter text-gray-600"
           >
-            We Support Your Development 
+            We Support Your Development
             <br />
             Journey from Design to Evaluation
           </motion.p>
@@ -77,7 +77,7 @@ function FlipCard({ title, description, icon }) {
 
   return (
     <motion.div
-      className="relative w-full h-56 perspective tracking-tighter"
+      className="relative w-full min-h-[14rem] md:min-h-[16rem] perspective"
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -87,13 +87,16 @@ function FlipCard({ title, description, icon }) {
         onClick={() => setFlipped(!flipped)}
         onMouseEnter={() => window.innerWidth > 768 && setFlipped(true)}
         onMouseLeave={() => window.innerWidth > 768 && setFlipped(false)}
-        className="relative w-full h-full transition-transform duration-[800ms] transform-style preserve-3d cursor-pointer group"
+        className="relative w-full h-full transition-transform duration-[800ms] transform-style preserve-3d cursor-pointer"
         style={{
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
         {/* Front Side */}
-        <div className="absolute inset-0 bg-white rounded-xl border border-gray-200 shadow-sm flex flex-col items-center justify-center px-4 py-6 backface-hidden group-hover:shadow-xl transition-all duration-300">
+        <div
+          className="absolute inset-0 bg-white rounded-xl border border-gray-200 shadow-sm flex flex-col items-center justify-center px-4 py-6 transition-all duration-300"
+          style={{ backfaceVisibility: "hidden" }}
+        >
           <motion.img
             src={icon}
             alt={title}
@@ -101,16 +104,21 @@ function FlipCard({ title, description, icon }) {
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 200 }}
           />
-          <h3 className="text-sm md:text-base font-semibold tracking-tighter text-center text-[#1e256e] px-2">
+          <h3 className="text-sm md:text-base font-semibold text-center text-[#1e256e] px-2">
             {title}
           </h3>
         </div>
 
         {/* Back Side */}
-        <div className="absolute inset-0 bg-[#1e256e] text-white rounded-xl px-4 py-6 transform rotateY-180 backface-hidden flex items-center justify-center text-sm md:text-base font-semibold tracking-tighter text-center leading-snug">
-          <p>{description}</p>
+        <div
+          className="absolute inset-0 bg-[#1e256e] text-white rounded-xl px-4 py-6 transform rotateY-180 flex items-start text-sm md:text-base text-center leading-snug overflow-y-auto"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <p className="max-h-full">{description}</p>
         </div>
       </div>
     </motion.div>
   );
 }
+
+
