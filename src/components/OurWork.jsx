@@ -18,7 +18,7 @@ const OurWork = () => {
         "Implementation and Support for a food production training program in select schools in H.P & Chandigarh",
       description:
         "Served as the implementation strategy partner, co-developing the rollout plan, infrastructure blueprint,and capacity-building model for a skill-based food processing program.",
-      pdf: "/assets/framework1.pdf",
+      pdf: "/assets/frame1.pdf",
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const OurWork = () => {
         "Skills Strengthening for Industrial Value Enhancement (STRIVE) – A World Bank- Supported National Vocational Reform Program",
       description:
         "End-to-end implementation support, fund disbursement oversight, and systemic reform execution for India’s $318M national skilling initiative under the World Bank.",
-      pdf: "/assets/policy1.pdf",
+      pdf: "/assets/policy2.pdf",
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ const OurWork = () => {
       title: "Strategic Advisory for Swapnopuron, Sundarbans",
       description:
         "Impact Assessment of Swapnopuron Welfare Society’s Education and Community Interventions",
-      pdf: "/assets/policy2.pdf",
+      pdf: "/assets/adviosy1.pdf",
     },
     {
       id: 4,
@@ -47,26 +47,26 @@ const OurWork = () => {
         "Impact Evaluation of School-Based Vocational Education Intervention Catalyst Program – in Delhi, Maharashtra, Gujarat, and Jharkhand",
       description:
         "Design and execution of a 4-state mixed-methods impact evaluation, leveraging LAHI’s large-scale student datasets to assess vocational training outcomes across Delhi, Maharashtra, Gujarat, and Jharkhand.",
-      pdf: "/assets/advisory1.pdf",
+      pdf: "/assets/adviosy2.pdf",
     },
     {
       id: 5,
-      category: "Policy Design and Systems Reform",
+      category: "Field Research and Evaluation",
       image: "/assets/client (2).png",
       title: "School Internship Verification under NSQF in Delhi",
       description:
         "End-to-end field data collection to ascertain the impact of skill training on children in sr. secondary school and verify internships in organizations.",
-      pdf: "/assets/advisory2.pdf",
+      pdf: "/assets/field1.pdf",
     },
     {
       id: 6,
-      category: "Field Research and Evaluation",
+      category: "Policy Design and Systems Reform",
       image: "/assets/client (1).png",
       title:
         "Scheme Design and Institutional Architecture for MSDE’s new ITI upgradation scheme",
       description:
         "Drafted comprehensive scheme guidelines for transforming 1,000 ITIs under a hub-and-spoke model, including: Institutional and governance arrangements, Financial model (INR 60,000 Cr outlay), Performance-based funding, and M&E frameworks.",
-      pdf: "/assets/field1.pdf",
+      pdf: "/assets/policy1.pdf",
     },
     {
       id: 7,
