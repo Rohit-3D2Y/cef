@@ -9,11 +9,13 @@ import AboutSection from './components/AboutSection'
 import PartnersSection from './components/PartnerSection'
 import StatsSection from './components/ProjectExp'
 import OurWork from './components/OurWork'
+import OurServices from './components/OurServices'
 
 const App = () => {
   return (
     <div>
       <LandingCarousel />
+      <OurServices />
       <AboutSection />
       <PartnersSection />
       <AboutUs />
