@@ -113,11 +113,10 @@ const LandingCarousel = () => {
           {/* Logo */}
           <a href="#">
             <img
-              src="/assets/logo1.png"
+              src="/assets/logo11.png"
               alt="Unnati C4E"
-              className="h-20 md:h-16 w-auto rounded-xl shadow-md"
+              className="h-16 md:h-14 w-auto rounded-xl shadow-md"
             />
-
           </a>
 
           {/* Desktop Nav Links */}
