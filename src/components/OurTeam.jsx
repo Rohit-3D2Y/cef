@@ -76,7 +76,12 @@ export default function OurTeam() {
                 <div className="flex items-start gap-3 mb-3">
                   {/* Name and Designation */}
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight">
+                    <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight flex items-center gap-3">
+                      <img
+                        src="/assets/networkImage.png" // Replace with your actual icon path
+                        alt="icon"
+                        className="w-8 h-8 object-contain" // 👈 Increased size to 32px
+                      />
                       {member.name}
                     </h3>
                     <p className="text-gray-600 text-sm font-medium mb-2">
@@ -94,6 +99,8 @@ export default function OurTeam() {
                   </p>
                 </div>
               </div>
+
+
             </div>
           ))}
         </div>
