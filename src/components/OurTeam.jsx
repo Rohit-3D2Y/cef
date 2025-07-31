@@ -57,11 +57,11 @@ export default function OurTeam() {
                 className={`p-6 flex items-center justify-center ${index % 2 === 0 ? "bg-[#1e256e]" : "bg-[#dce3f5]"
                   }`}
               >
-                <div className="relative overflow-hidden rounded-lg">
+                <div className="relative overflow-hidden -mb-6">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-60 object-cover rounded-lg"
+                    className="w-full h-60 object-cover rounded-sm"
                     onError={(e) => {
                       e.target.src =
                         "https://via.placeholder.com/400x500/e5e7eb/6b7280?text=Person";
