@@ -10,7 +10,7 @@ const Client = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-white to-gray-50 px-6 mt-20">
+    <section id="ourclients" className="relative bg-gradient-to-b from-white to-gray-50 px-6 mt-20">
       <h2 className="text-3xl md:text-4xl font-semibold tracking-tight   rounded-full text-center mb-5 text-[#292d6a]">
        <span className="bg-[#ffd300] py-2 px-4 rounded-2xl"> Our Clients</span>
       </h2>

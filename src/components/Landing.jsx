@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react"; // For hamburger icon
+import { Menu, X } from "lucide-react";
 
 const LandingCarousel = () => {
   const images = [
@@ -40,6 +40,54 @@ const LandingCarousel = () => {
     return () => clearInterval(wordInterval);
   }, [words.length]);
 
+  // Scroll to section with offset for sticky navbar
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const offset = 80; // Adjust based on your navbar height
+      const targetPosition =
+        section.getBoundingClientRect().top + window.scrollY - offset;
+
+      smoothScrollTo(targetPosition, 800); // 800ms = slower & smoother
+      setMenuOpen(false);
+    }
+  };
+
+  const smoothScrollTo = (targetY, duration = 600) => {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = easeInOutQuad(timeElapsed, startY, distance, duration);
+
+      window.scrollTo(0, run);
+
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  };
+
+
+  const navLinks = [
+    "About Us",
+    "Our Services",
+    "Our Work",
+    "Partners",
+    "Our Clients",       
+    "Contact",
+  ];
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Images */}
@@ -63,24 +111,29 @@ const LandingCarousel = () => {
       <nav className="fixed top-0 left-0 w-full z-30 bg-black/40 backdrop-blur-md text-white shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <h1 className="text-xl md:text-2xl font-bold tracking-wide">
-            Unnati C4E
-          </h1>
+          <a href="#">
+            <img
+              src="/assets/logo1.png"
+              alt="Unnati C4E"
+              className="h-20 md:h-16 w-auto rounded-xl shadow-md"
+            />
 
-          {/* Desktop Links */}
-          <ul className="hidden md:flex space-x-8 text-sm font-medium">
-            {["About Us", "Our Services", "Our Work", "Insights", "Careers", "Contact"].map(
-              (item, idx) => (
-                <li key={idx}>
-                  <a
-                    href={`#${item.replace(/\s+/g, "").toLowerCase()}`}
-                    className="hover:text-[#ffd300] transition-colors duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
+          </a>
+
+          {/* Desktop Nav Links */}
+          <ul className="hidden md:flex space-x-8 text-md font-medium">
+            {navLinks.map((item, idx) => (
+              <li key={idx}>
+                <button
+                  onClick={() =>
+                    scrollToSection(item.replace(/\s+/g, "").toLowerCase())
+                  }
+                  className="hover:text-[#ffd300] transition-colors duration-300"
+                >
+                  {item}
+                </button>
+              </li>
+            ))}
           </ul>
 
           {/* Mobile Menu Toggle */}
@@ -102,18 +155,17 @@ const LandingCarousel = () => {
               transition={{ duration: 0.3 }}
               className="md:hidden bg-black/90 backdrop-blur-lg px-6 py-6 space-y-4 text-center"
             >
-              {["About Us", "Our Services", "Our Work", "Insights", "Careers", "Contact"].map(
-                (item, idx) => (
-                  <a
-                    key={idx}
-                    href={`#${item.replace(/\s+/g, "").toLowerCase()}`}
-                    className="block text-lg text-white hover:text-[#ffd300] transition-colors duration-300"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                )
-              )}
+              {navLinks.map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() =>
+                    scrollToSection(item.replace(/\s+/g, "").toLowerCase())
+                  }
+                  className="block text-lg text-white hover:text-[#ffd300] transition-colors duration-300"
+                >
+                  {item}
+                </button>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
@@ -130,7 +182,7 @@ const LandingCarousel = () => {
             Driving Impact Through
           </h1>
 
-          {/* Rotating words */}
+          {/* Rotating Words */}
           <div className="h-16 mt-6 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.span
@@ -153,12 +205,12 @@ const LandingCarousel = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-10"
           >
-            <a
-              href="#contact"
+            <button
+              onClick={() => scrollToSection("contact")}
               className="px-8 py-4 bg-[#ffd300] text-[#292d6a] font-bold text-lg rounded-full shadow-lg hover:bg-[#f0c200] transition-all duration-300"
             >
               Get in Touch Now
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </div>

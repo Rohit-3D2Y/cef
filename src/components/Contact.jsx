@@ -30,7 +30,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-white">
+    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-blue-50 to-white">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
         
         {/* Left Side */}

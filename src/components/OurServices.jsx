@@ -30,7 +30,7 @@ const services = [
 
 export default function WhatWeDo() {
   return (
-    <section className="bg-gradient-to-br from-white to-gray-50 py-20 px-6 md:px-12 tracking-tighter">
+    <section id="ourservices" className="bg-gradient-to-br from-white to-gray-50 py-20 px-6 md:px-12 tracking-tighter">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Text */}
         <div className="space-y-6">
