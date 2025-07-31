@@ -48,44 +48,40 @@ export default function OurTeam() {
         {/* Team Cards Grid */}
         <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
           {teamMembers.map((member, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full md:w-72">
-              {/* Image Section */}
-              <div className="p-6 flex items-center justify-center">
-                <div className="relative overflow-hidden ">
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full md:w-72"
+            >
+              {/* Image Section with alternating bg color */}
+              <div
+                className={`p-6 flex items-center justify-center ${index % 2 === 0 ? "bg-[#1e256e]" : "bg-[#dce3f5]"
+                  }`}
+              >
+                <div className="relative overflow-hidden rounded-lg">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-60 object-cover rounded-lg"
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/400x500/e5e7eb/6b7280?text=Person";
+                      e.target.src =
+                        "https://via.placeholder.com/400x500/e5e7eb/6b7280?text=Person";
                     }}
                   />
                 </div>
               </div>
 
-
               {/* Content Section */}
               <div className="p-6 bg-white">
                 {/* Name and Icon Section */}
                 <div className="flex items-start gap-3 mb-3">
-                  {/* Network Icon */}
-                  {/* <div className="flex-shrink-0 mt-1">
-                    <div className="w-12 h-12 flex items-center justify-center">
-                      <img
-                        src="/assets/logo1.png"
-                        className="w-12 h-12"
-                        alt="Company Logo"
-                        onError={(e) => {
-                          e.target.src = "https://via.placeholder.com/48x48/1e256e/ffffff?text=Logo";
-                        }}
-                      />
-                    </div>
-                  </div> */}
-
                   {/* Name and Designation */}
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight">{member.name}</h3>
-                    <p className="text-gray-600 text-sm font-medium mb-2">{member.designation}</p>
+                    <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight">
+                      {member.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm font-medium mb-2">
+                      {member.designation}
+                    </p>
                     {/* Separator Line */}
                     <div className="w-full h-px bg-gray-300 mb-3"></div>
                   </div>
@@ -93,7 +89,9 @@ export default function OurTeam() {
 
                 {/* Description */}
                 <div>
-                  <p className="text-xs text-gray-600 leading-relaxed">{member.description}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {member.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -101,5 +99,6 @@ export default function OurTeam() {
         </div>
       </div>
     </section>
+
   )
 }

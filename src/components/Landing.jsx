@@ -80,10 +80,10 @@ const LandingCarousel = () => {
 
 
   const navLinks = [
-    "About Us",
     "Our Services",
-    "Our Work",
     "Partners",
+    "About Us",
+    "Our Work",
     "Testimonials",       
     "Contact",
   ];
