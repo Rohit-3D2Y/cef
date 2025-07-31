@@ -4,7 +4,8 @@ import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 const testimonials = [
   {
     name: "Raj Gilda",
-    title: "Co-founder, Lend A Hand India",
+    title: "Co-founder",
+    company: "Lend A Hand India",
     image: "https://centreforevaluation.com/wp-content/uploads/2025/07/raj-gilda.jpeg",
     logo: "https://centreforevaluation.com/wp-content/uploads/2025/07/LAHI-logo.png",
     feedback:
@@ -12,8 +13,8 @@ const testimonials = [
   },
   {
     name: "RP Dhingra",
-    title:
-      "Former Director - Projects, Directorate General of Training (DGT),<br /> Ministry of Skill Development & Entrepreneurship (MSDE)",
+    title: "Former Director - Projects, Directorate General of Training (DGT)",
+    company: "Ministry of Skill Development & Entrepreneurship (MSDE)",
     image: "/assets/rp.png",
     logo: "https://centreforevaluation.com/wp-content/uploads/2025/07/Govt.-of-NCT-of-Delhi-logo.png",
     feedback:
@@ -25,7 +26,6 @@ const TestimonialSection = () => {
   const [current, setCurrent] = useState(0);
   const [fade, setFade] = useState(true);
 
-  // Auto-change every 6 seconds with fade effect
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
@@ -33,7 +33,7 @@ const TestimonialSection = () => {
         setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
         setFade(true);
       }, 500);
-    }, 3000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
@@ -43,7 +43,6 @@ const TestimonialSection = () => {
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10">
-        
         {/* Left Heading */}
         <div className="md:w-1/3 text-center md:text-left">
           <h2 className="text-3xl mt-10 md:text-6xl font-semibold tracking-tight text-[#1e256e] leading-snug">
@@ -58,26 +57,27 @@ const TestimonialSection = () => {
           }`}
         >
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            
-            {/* Client Image & Name */}
-            <div className="flex flex-col items-center md:items-center text-center md:text-left">
+            {/* Client Image & Details */}
+            <div className="flex flex-col items-center text-center md:items-start md:text-left w-full md:w-1/3">
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="max-w-[200px] h-auto rounded-md object-contain shadow-md"
+                className="w-40 h-40 md:w-48 md:h-48 rounded-lg object-cover shadow-md"
               />
-              <p
-  className="mt-4 font-semibold text-[#1e256e] text-sm md:text-base text-center md:text-left leading-snug max-w-xs md:max-w-sm"
-  dangerouslySetInnerHTML={{
-    __html: `— ${testimonial.name}, ${testimonial.title}`,
-  }}
-></p>
- <img
+              <p className="mt-4 font-semibold text-[#1e256e] text-lg">
+                {testimonial.name}
+              </p>
+              <p className="text-base text-gray-600 max-w-xs leading-snug">
+                {testimonial.title}
+              </p>
+              <p className="text-base font-semibold text-[#1848a0] mt-1">
+                {testimonial.company}
+              </p>
+              <img
                 src={testimonial.logo}
                 alt="Client Logo"
-                className="w-48 mt-6 object-contain mx-auto md:mx-0"
+                className="w-32 mt-4 object-contain"
               />
-
             </div>
 
             {/* Feedback Section */}
@@ -91,8 +91,6 @@ const TestimonialSection = () => {
 
               {/* Right Quote */}
               <FaQuoteRight className="text-[#ffd300] text-3xl absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6" />
-
-             
             </div>
           </div>
         </div>
