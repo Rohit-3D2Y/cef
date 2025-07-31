@@ -13,6 +13,7 @@ import OurServices from './components/OurServices'
 import Client from './components/ClientSection'
 import TestimonialSection from './components/Testimonial'
 import ResearchEthicsSection from './components/ResearchEthicsSection'
+import OurTeam from './components/OurTeam'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Client />
        <MentorAdvisors />
       <FounderMessageBlock />
+      <OurTeam />
       <StatsSection />
       <TestimonialSection />
       <ResearchEthicsSection />
