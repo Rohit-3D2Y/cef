@@ -9,6 +9,7 @@ import AboutSection from './components/AboutSection'
 import PartnersSection from './components/PartnerSection'
 import StatsSection from './components/ProjectExp'
 import OurWork from './components/OurWork'
+import Client from './components/ClientSection'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <PartnersSection />
       <AboutUs />
       <OurWork />
+      <Client />
        <MentorAdvisors />
       <FounderMessageBlock />
       <StatsSection />
