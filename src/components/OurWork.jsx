@@ -1,3 +1,4 @@
+import { link } from "framer-motion/client";
 import React, { useState } from "react";
 
 const OurWork = () => {
@@ -128,6 +129,27 @@ const OurWork = () => {
         "To set up a proof of concept for a skills training modality which a) satisfies the skilled manpower needs of Micro, Small and Medium Enterprises (MSME) firms; b) establishes a scalable mechanism that is able to skill India’s youth at speed. ",
       pdf: "/assets/impact1.pdf",
     },
+    {
+      id: 13,
+      category: "Impact Insights",
+      image: "/assets/impactt1.jpg",
+      title:
+        "Tracer Studies for Evidence-Based Decisions",
+      description:
+        "Tracer studies involve tracking the career paths and educational outcomes of graduates, providing invaluable insights into the effectiveness of educational programs and institutions. By collecting and analyzing data on employment rates, salary levels, skill utilization, and further education, these studies offer a comprehensive understanding of how well educational offerings align with labor market demands and societal needs.",
+        link: "https://g.co/gemini/share/035749683fb2",
+      // pdf: "/assets/impact1.pdf",
+    },
+    {
+      id: 14,
+      category: "Impact Insights",
+      image: "/assets/impactt2.jpg",
+      title:
+        "Skilling Up India’s Youth with Support from Industry",
+      description:
+        "Facilitating job-seeking youth to acquire relevant skills for the emerging needs of India’s rapidly growing industries and tourism is critical and extremely complex. With funding from the World Bank Skills Strengthening for Industrial Value Enhancement (STRIVE) project, the Ministry of Skills Development & Entrepreneurship (MSDE) has piloted a new apprenticeship promotion modality, the Industry Apprenticeship Initiative (IAI). The grant mechanism operates through Industry Clusters (ICs). The approach shows results and promise for scaling-up.",
+      pdf: "/assets/impact3.pdf",
+    },
   ];
 
   const [activeCategory, setActiveCategory] = useState("All Posts");
@@ -194,14 +216,25 @@ const OurWork = () => {
                 </h3>
                 <p className="mt-3 text-gray-600 text-sm">{post.description}</p>
 
-                {/* PDF Download Button */}
-                <a
-                  href={post.pdf}
-                  download
-                  className="mt-4 inline-block text-[#1e256e] font-medium hover:text-[#ffd300] transition-colors"
-                >
-                  Read More ↓
-                </a>
+                {/* PDF Download Button or Link */}
+                {post.link ? (
+                  <a
+                    href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block text-[#1e256e] font-medium hover:text-[#ffd300] transition-colors"
+                  >
+                    Read More ↓
+                  </a>
+                ) : (
+                  <a
+                    href={post.pdf}
+                    download
+                    className="mt-4 inline-block text-[#1e256e] font-medium hover:text-[#ffd300] transition-colors"
+                  >
+                    Read More ↓
+                  </a>
+                )}
               </div>
             </div>
           ))}
