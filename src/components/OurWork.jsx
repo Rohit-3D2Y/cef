@@ -7,6 +7,7 @@ const OurWork = () => {
     "Policy Design and Systems Reform",
     "Advisory and Evaluation Systems",
     "Framework Design and Program Development",
+    "Knowledge Papers",
   ];
 
   const posts = [
@@ -76,6 +77,46 @@ const OurWork = () => {
       description:
         "Supported the design of the intervention, supervised end-to-end data collection, and overall RCT to evaluate how reducing information barriers via the MEET app improved outcomes for female vocational graduates.",
       pdf: "/assets/field2.pdf",
+    },
+    {
+      id: 8,
+      category: "Policy Design and Systems Reform",
+      image: "/assets/policyy3.png",
+      title:
+        "Gender Study to Identify Barriers supported by World Bank STRIVEProject",
+      description:
+        "Led a national mixed-methods study to identify barriers to women’s participation in ITIs,apprenticeships, and jobs, and proposed actionable strategies for a more inclusive skillingecosystem",
+      pdf: "/assets/policy3.pdf",
+    },
+    {
+      id: 9,
+      category: "Policy Design and Systems Reform",
+      image: "/assets/policyy4.png",
+      title:
+        "Tracer Study 2012",
+      description:
+        "Led the national end-term tracer study under the World Bank’s VTIP, evaluating labor market outcomes and institutional performance of ITIs toinform future skilling policies.",
+      pdf: "/assets/policy4.pdf",
+    },
+    {
+      id: 10,
+      category: "Policy Design and Systems Reform",
+      image: "/assets/policyy5.png",
+      title:
+        "RCT Impact Evaluation Safety Intervention",
+      description:
+        "Led the end-to-end design and execution of a large-scale Randomized Control Trial (RCT) baseline study. This study assessed the imapct of gender-based violence on women's mobility, vocational training access, and labor market aspirations.",
+      pdf: "/assets/policy5.pdf",
+    },
+    {
+      id: 11,
+      category: "Policy Design and Systems Reform",
+      image: "/assets/policyy6.png",
+      title:
+        "Tracer Study 2022",
+      description:
+        "Led the design and execution of a tech-enabled pilot tracer study covering 18,500+ ITI graduates to track employment outcomes and support a scalable methodology for India’s TVET system",
+      pdf: "/assets/policy6.pdf",
     },
   ];
 
