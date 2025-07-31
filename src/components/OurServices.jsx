@@ -40,7 +40,7 @@ export default function WhatWeDo() {
             transition={{ duration: 0.6 }}
             className="text-6xl md:text-5xl font-bold text-gray-900"
           >
-            What we do?
+            What we provide
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
