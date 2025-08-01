@@ -114,7 +114,7 @@ function FlipCard({ title, description, icon }) {
           className="absolute inset-0 bg-[#1e256e] text-white rounded-xl px-4 py-6 transform rotateY-180 flex items-start text-sm md:text-base text-center leading-snug overflow-y-auto"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <p className="max-h-full">{description}</p>
+          <p className="max-h-full text-2xl">{description}</p>
         </div>
       </div>
     </motion.div>

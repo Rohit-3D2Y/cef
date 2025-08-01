@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracer Studies: Evidence for Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Neutrals -->
+    <!-- Application Structure Plan: A thematic, single-page narrative structure was chosen to guide users logically from the 'why' to the 'how'. It starts with the high-level importance (The Imperative), defines the concept (What Are They?), shows real-world application (Global Insights), outlines problems (Challenges), and concludes with solutions (The Way Forward). This is more intuitive for a mixed audience than a rigid report structure. Key interactions include tabbed content for case studies and interactive charts to allow users to explore data points directly, enhancing engagement and understanding. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: WDR 2018 concept "Schooling is not Learning". Goal: Establish Urgency. Viz: HTML/CSS feedback loop diagram. Interaction: Static visual metaphor. Justification: Strong conceptual opening. Method: HTML/CSS.
+        - Report Info: Definition of Tracer Study. Goal: Inform. Viz: Icon-based list. Interaction: None. Justification: Clear, scannable definition for non-experts. Method: HTML/CSS with Unicode.
+        - Report Info: Bangladesh employment data (gender disparity). Goal: Compare. Viz: Grouped Bar Chart. Interaction: Hover tooltips. Justification: Directly highlights the key finding of gender inequality. Library: Chart.js.
+        - Report Info: Bangladesh skills gap data. Goal: Inform/Compare. Viz: Horizontal Bar Chart. Interaction: Hover tooltips. Justification: Clearly displays employer feedback and ranks skill needs. Library: Chart.js.
+        - Report Info: Palestine unemployment data (regional disparity). Goal: Compare. Viz: Bar Chart. Interaction: Hover tooltips. Justification: Effectively shows the stark contrast between regions. Library: Chart.js.
+        - Report Info: Common implementation challenges. Goal: Organize/Inform. Viz: Interactive icon-based grid. Interaction: Hover to reveal details. Justification: Breaks down dense text into digestible, engaging chunks. Method: HTML/CSS/JS.
+        - Report Info: Recommendations/Best Practices. Goal: Inform/Organize. Viz: Accordion. Interaction: Click to expand. Justification: Manages a large amount of text cleanly, allowing users to focus on topics of interest. Method: HTML/CSS/JS.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #3b82f6;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .challenge-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .cycle-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .cycle-step {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            position: relative;
+        }
+        .cycle-arrow {
+            font-size: 2rem;
+            color: #6d28d9;
+        }
+         @media (max-width: 640px) {
+            .cycle-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800 font-serif">
+                Evidence for Impact
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#imperative" class="nav-link text-gray-600">Why It Matters</a>
+                <a href="#what-are-they" class="nav-link text-gray-600">What Are They?</a>
+                <a href="#insights" class="nav-link text-gray-600">Global Insights</a>
+                <a href="#challenges" class="nav-link text-gray-600">Challenges</a>
+                <a href="#way-forward" class="nav-link text-gray-600">The Way Forward</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#imperative" class="block py-2 px-6 text-sm text-gray-600">Why It Matters</a>
+            <a href="#what-are-they" class="block py-2 px-6 text-sm text-gray-600">What Are They?</a>
+            <a href="#insights" class="block py-2 px-6 text-sm text-gray-600">Global Insights</a>
+            <a href="#challenges" class="block py-2 px-6 text-sm text-gray-600">Challenges</a>
+            <a href="#way-forward" class="block py-2 px-6 text-sm text-gray-600">The Way Forward</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="imperative" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">The Imperative of Evidence</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                    To foster meaningful progress, we must first measure where we are. As the World Bank's 2018 World Development Report highlighted, "schooling is not learning." Effective development demands that we move beyond tracking inputs and start evaluating real-world outcomes. Tracer studies provide the critical feedback loop to turn data into impactful policy and action.
+                </p>
+                <div class="flex justify-center items-center flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 text-center text-sm font-semibold">
+                    <div class="bg-indigo-100 text-indigo-800 rounded-lg p-4 w-48">Education & Training Programs</div>
+                    <div class="text-3xl text-indigo-500">&#8594;</div>
+                    <div class="bg-indigo-100 text-indigo-800 rounded-lg p-4 w-48">Graduate Outcomes (Jobs, Skills)</div>
+                    <div class="text-3xl text-indigo-500">&#8594;</div>
+                    <div class="bg-indigo-100 text-indigo-800 rounded-lg p-4 w-48">Tracer Study Data & Analysis</div>
+                    <div class="text-3xl text-indigo-500">&#8634;</div>
+                    <div class="bg-green-100 text-green-800 rounded-lg p-4 w-48">Evidence-Based Policy & Refinements</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-are-they" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">What Exactly Are Tracer Studies?</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        Tracer studies are systematic surveys of graduates from educational or training institutions. Conducted after they leave, these studies gather crucial information on their journey into the workforce or further education, providing a clear picture of program effectiveness and relevance.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-semibold mb-2">Measure Employability</h3>
+                        <p class="text-gray-600">They track key metrics like employment rates, salaries, and the time it takes for graduates to find a job.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h3 class="text-xl font-semibold mb-2">Assess Relevance</h3>
+                        <p class="text-gray-600">They provide direct feedback from graduates and employers on whether the skills learned are the skills needed in the market.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl mb-4">🔄</div>
+                        <h3 class="text-xl font-semibold mb-2">Drive Improvement</h3>
+                        <p class="text-gray-600">The findings create an evidence base to refine curricula, improve teaching, and enhance student support services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="insights" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Global Insights: Evidence in Action</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        From South Asia to the Middle East and Europe, tracer studies provide actionable intelligence. Explore the data to see how different regions leverage these studies to tackle unique challenges.
+                    </p>
+                </div>
+                <div class="flex justify-center mb-8">
+                    <div class="flex space-x-2 bg-gray-200 p-1 rounded-lg">
+                        <button class="tab-button px-4 py-2 text-sm font-medium rounded-md active" data-tab="bangladesh">Bangladesh</button>
+                        <button class="tab-button px-4 py-2 text-sm font-medium rounded-md" data-tab="palestine">Palestine</button>
+                        <button class="tab-button px-4 py-2 text-sm font-medium rounded-md" data-tab="eu">European Union</button>
+                    </div>
+                </div>
+
+                <div id="tab-content" class="max-w-6xl mx-auto">
+                    <div id="bangladesh" class="tab-pane active">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4 text-gray-800">Case Study: Bangladesh TVET Graduates</h3>
+                                <p class="text-gray-600 mb-4">
+                                    Tracer studies of polytechnic graduates revealed critical challenges in the transition from education to employment, especially highlighting a significant gender gap. While nearly half of male graduates found work, the unemployment rate for female graduates was alarmingly high at 52%.
+                                </p>
+                                <p class="text-gray-600">
+                                    This data provides a clear mandate for targeted interventions to support female graduates and to strengthen the link between training institutions and the labor market.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <div class="chart-container">
+                                    <canvas id="bangladeshGenderChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="grid md:grid-cols-2 gap-8 items-center mt-12">
+                             <div class="bg-white p-4 rounded-lg shadow-md order-2 md:order-1">
+                                <div class="chart-container">
+                                    <canvas id="bangladeshSkillsChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="order-1 md:order-2">
+                                <h3 class="text-2xl font-bold mb-4 text-gray-800">Employer Feedback: The Skills Gap</h3>
+                                <p class="text-gray-600">
+                                    The studies also surveyed employers, who identified a major gap between the skills taught and the skills required. Over 80% emphasized a need to strengthen problem-solving skills, with ICT and practical technical skills also ranking high. This feedback is invaluable for curriculum reform.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="palestine" class="tab-pane hidden">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4 text-gray-800">Case Study: Palestine's Complex Market</h3>
+                                <p class="text-gray-600 mb-4">
+                                    In Palestine, tracer studies shed light on a difficult labor market, revealing severe regional disparities. The unemployment rate for TVET graduates in the Gaza Strip was over double that of the West Bank.
+                                </p>
+                                <p class="text-gray-600">
+                                    Crucially, over 82% of employed graduates found jobs through informal networks (family and friends), highlighting a weakness in formal job placement services and the need to build stronger institutional links to industry.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <div class="chart-container">
+                                    <canvas id="palestineUnemploymentChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="eu" class="tab-pane hidden">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Systematized Tracking in the European Union</h3>
+                            <p class="text-gray-600 max-w-3xl mx-auto">
+                                Across the EU, graduate tracking is a systematic tool for quality assurance and policy planning. Rather than one-off studies, it is an integrated part of the educational ecosystem. The primary goals are:
+                            </p>
+                            <ul class="mt-6 text-left max-w-xl mx-auto space-y-3">
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3">&#10003;</span>
+                                    <span><strong class="font-semibold">Quality Assurance:</strong> Ensuring VET programs meet high standards and are relevant to market needs.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3">&#10003;</span>
+                                    <span><strong class="font-semibold">Informing Policy:</strong> Providing data to guide national and EU-level decisions on education and employment strategies.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3">&#10003;</span>
+                                    <span><strong class="font-semibold">Career Guidance:</strong> Giving prospective students realistic information about career pathways and outcomes.</span>
+                                </li>
+                            </ul>
+                             <p class="text-gray-600 max-w-3xl mx-auto mt-6">
+                                A key best practice is the use of <strong class="font-semibold">hybrid methodologies</strong>, combining rich administrative data (from tax and social security records) with targeted surveys to get a complete, objective, and nuanced picture of graduate success.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Navigating the Hurdles</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        While powerful, implementing effective tracer studies is not without challenges. Understanding these hurdles is the first step to overcoming them. Hover over each card to learn more.
+                    </p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">📉</span>
+                            <h3 class="text-xl font-semibold">Low Response Rates</h3>
+                        </div>
+                        <p class="text-gray-600">Reaching graduates long after they leave is difficult. Outdated contact information can lead to low participation and potentially biased results.</p>
+                    </div>
+                    <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🔒</span>
+                            <h3 class="text-xl font-semibold">Data Protection</h3>
+                        </div>
+                        <p class="text-gray-600">Combining administrative data from different government agencies raises significant legal and privacy concerns that require careful navigation.</p>
+                    </div>
+                    <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">❓</span>
+                            <h3 class="text-xl font-semibold">Defining "Employment"</h3>
+                        </div>
+                        <p class="text-gray-600">In economies with large informal sectors, standard definitions of work may not capture the full picture of graduates' economic activity.</p>
+                    </div>
+                    <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🧩</span>
+                            <h3 class="text-xl font-semibold">Limited Comparability</h3>
+                        </div>
+                        <p class="text-gray-600">Different studies often use different methods and indicators, making it hard to compare results across regions or over time.</p>
+                    </div>
+                    <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">💰</span>
+                            <h3 class="text-xl font-semibold">Resource Intensive</h3>
+                        </div>
+                        <p class="text-gray-600">High-quality, regular tracer studies require sustained funding, technical expertise, and strong institutional commitment.</p>
+                    </div>
+                     <div class="challenge-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">➡️</span>
+                            <h3 class="text-xl font-semibold">Closing the Loop</h3>
+                        </div>
+                        <p class="text-gray-600">The biggest challenge is often ensuring that the findings are actually used to inform policy and drive meaningful change.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="way-forward" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Way Forward: A Virtuous Cycle</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        Effective tracer studies are not an endpoint; they are the engine of a continuous improvement cycle. By systematically measuring outcomes and feeding the insights back into the system, we can create more responsive and impactful education for all.
+                    </p>
+                </div>
+                
+                <div class="cycle-diagram mb-12">
+                    <div class="cycle-step">Measure Outcomes</div>
+                    <div class="cycle-arrow">&#8594;</div>
+                    <div class="cycle-step">Identify Gaps & Opportunities</div>
+                    <div class="cycle-arrow">&#8594;</div>
+                    <div class="cycle-step">Design Targeted Interventions</div>
+                    <div class="cycle-arrow">&#8594;</div>
+                    <div class="cycle-step">Implement & Refine Policy</div>
+                     <div class="cycle-arrow transform rotate-90 sm:rotate-0">&#8634;</div>
+                </div>
+
+                <div class="max-w-4xl mx-auto mt-12">
+                    <h3 class="text-2xl font-bold text-center mb-8">Key Recommendations</h3>
+                    <div class="space-y-4" id="accordion-container">
+                        <div class="accordion-item border rounded-lg">
+                            <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center bg-gray-50 hover:bg-gray-100">
+                                1. Institutionalize and Systematize
+                                <span class="transform transition-transform duration-300">+</span>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 text-gray-600">
+                                <p>Governments and institutions should mandate and resource regular tracer studies, making them a core part of the quality assurance framework, not just a one-off project.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item border rounded-lg">
+                            <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center bg-gray-50 hover:bg-gray-100">
+                                2. Adopt Integrated Methodologies
+                                <span class="transform transition-transform duration-300">+</span>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 text-gray-600">
+                                <p>Combine objective administrative data (from tax, social security) with subjective survey data (on job satisfaction, skill use) to get a complete picture. This provides robust evidence while allowing for shorter, more targeted surveys.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item border rounded-lg">
+                            <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center bg-gray-50 hover:bg-gray-100">
+                                3. Strengthen Industry Partnerships
+                                <span class="transform transition-transform duration-300">+</span>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 text-gray-600">
+                                <p>Move beyond curriculum advice to active collaboration. Strong industry links are crucial for creating formal job placement services, internships, and teacher "return-to-industry" programs to keep instruction relevant.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item border rounded-lg">
+                            <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center bg-gray-50 hover:bg-gray-100">
+                                4. Focus on Actionable Feedback Loops
+                                <span class="transform transition-transform duration-300">+</span>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 text-gray-600">
+                                <p>Ensure data is analyzed and disseminated in user-friendly formats to policymakers, curriculum developers, and career counselors. Create clear channels for this evidence to be integrated into decision-making.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Evidence for Impact. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">An interactive summary based on research by the World Bank, European Training Foundation, and other development partners.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const tab = button.getAttribute('data-tab');
+                    tabPanes.forEach(pane => {
+                        if (pane.id === tab) {
+                            pane.classList.remove('hidden');
+                            pane.classList.add('active');
+                        } else {
+                            pane.classList.add('hidden');
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('span');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-45');
+                    } else {
+                        document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                        document.querySelectorAll('.accordion-header span').forEach(i => i.classList.remove('rotate-45'));
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-45');
+                    }
+                });
+            });
+
+            const bangladeshGenderData = {
+                labels: ['Employed', 'Unemployed', 'Studying'],
+                datasets: [
+                    {
+                        label: 'Male Graduates (%)',
+                        data: [49, 30, 19],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Female Graduates (%)',
+                        data: [38, 52, 9],
+                        backgroundColor: 'rgba(236, 72, 153, 0.7)',
+                        borderColor: 'rgba(236, 72, 153, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+
+            const bangladeshSkillsData = {
+                labels: ['Problem-solving', 'ICT Skills', 'Practical Technical', 'Communication', 'Theoretical Knowledge', 'English Skills'],
+                datasets: [{
+                    label: 'Employers Emphasizing Need to Strengthen (%)',
+                    data: [83, 72, 71, 67, 61, 51],
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            const palestineUnemploymentData = {
+                labels: ['Gaza Strip', 'West Bank'],
+                datasets: [{
+                    label: 'TVET Graduate Unemployment Rate (%)',
+                    data: [70, 32],
+                    backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(245, 158, 11, 0.7)'],
+                    borderColor: ['rgba(239, 68, 68, 1)', 'rgba(245, 158, 11, 1)'],
+                    borderWidth: 1
+                }]
+            };
+            
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const horizontalChartOptions = {
+                ...chartOptions,
+                indexAxis: 'y',
+                 scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            };
+
+
+            new Chart(document.getElementById('bangladeshGenderChart'), {
+                type: 'bar',
+                data: bangladeshGenderData,
+                options: {
+                    ...chartOptions,
+                    plugins: {
+                        ...chartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'Polytechnic Graduate Outcomes by Gender (%)'
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('bangladeshSkillsChart'), {
+                type: 'bar',
+                data: bangladeshSkillsData,
+                options: {
+                    ...horizontalChartOptions,
+                     plugins: {
+                        ...horizontalChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'Skills Gaps Identified by Employers in Bangladesh'
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('palestineUnemploymentChart'), {
+                type: 'bar',
+                data: palestineUnemploymentData,
+                options: {
+                    ...chartOptions,
+                    plugins: {
+                        ...chartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'Regional Disparity in TVET Graduate Unemployment'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

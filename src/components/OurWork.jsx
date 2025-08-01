@@ -137,7 +137,7 @@ const OurWork = () => {
         "Tracer Studies for Evidence-Based Decisions",
       description:
         "Tracer studies involve tracking the career paths and educational outcomes of graduates, providing invaluable insights into the effectiveness of educational programs and institutions. By collecting and analyzing data on employment rates, salary levels, skill utilization, and further education, these studies offer a comprehensive understanding of how well educational offerings align with labor market demands and societal needs.",
-        link: "https://g.co/gemini/share/035749683fb2",
+        link: "/assets/index2.html",
       // pdf: "/assets/impact1.pdf",
     },
     {

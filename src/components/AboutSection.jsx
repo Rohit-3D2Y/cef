@@ -8,18 +8,18 @@ const AboutSection = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-4">
             <img
-              src="/assets/block (2).jpg"
+              src="/assets/Advisory.png"
               alt="Classroom"
               className="w-full h-48 object-cover rounded-lg shadow-md"
             />
             <img
-              src="/assets/skilling.jpg"
+              src="/assets/Evidence.png"
               alt="Girl Studying"
               className="w-full h-48 object-cover rounded-lg shadow-md"
             />
           </div>
           <img
-            src="/assets/block (1).jpg"
+            src="/assets/Strategy.jpg"
             alt="Children Smiling"
             className="w-full h-full object-cover rounded-lg shadow-md"
           />
