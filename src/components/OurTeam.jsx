@@ -78,7 +78,7 @@ export default function OurTeam() {
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-[#1e256e] mb-1 leading-tight flex items-center gap-3">
                       <img
-                        src="/assets/networkImage.png" 
+                        src="/assets/net.jpg" 
                         alt="icon"
                         className="w-8 h-8 object-contain font-bold" 
                       />
